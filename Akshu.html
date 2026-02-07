@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Happy Rose Day ❤️</title>
+
+<style>
+    body {
+        margin: 0;
+        font-family: 'Segoe UI', sans-serif;
+        background: linear-gradient(to bottom, #ff9a9e, #fad0c4);
+        height: 100vh;
+        overflow: hidden;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+        color: #fff;
+    }
+
+    .card {
+        background: rgba(255, 255, 255, 0.15);
+        padding: 30px;
+        border-radius: 20px;
+        backdrop-filter: blur(10px);
+        box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+        max-width: 350px;
+    }
+
+    h1 {
+        font-size: 28px;
+        margin-bottom: 10px;
+    }
+
+    p {
+        font-size: 18px;
+        line-height: 1.4;
+    }
+
+    button {
+        margin-top: 20px;
+        padding: 12px 25px;
+        border: none;
+        border-radius: 25px;
+        background: #ff4d6d;
+        color: white;
+        font-size: 16px;
+        cursor: pointer;
+        transition: 0.3s;
+    }
+
+    button:hover {
+        background: #ff1e4d;
+    }
+
+    .rose {
+        position: absolute;
+        font-size: 24px;
+        animation: fall linear infinite;
+    }
+
+    @keyframes fall {
+        0% {
+            transform: translateY(-50px);
+            opacity: 1;
+        }
+        100% {
+            transform: translateY(110vh);
+            opacity: 0;
+        }
+    }
+</style>
+</head>
+<body>
+
+<div class="card">
+    <h1>🌹 Happy Rose Day Akanksha 🌹</h1>
+    <p>
+        Tula ha rose nahi,<br>
+        pan maza hruday denar aahe 💖<br><br>
+        Tu mazi smile, maza sukoon,<br>
+        ani maza favourite person aahe 🥰
+    </p>
+    <button onclick="surprise()">Tap for a Surprise 💌</button>
+</div>
+
+<script>
+function surprise() {
+    alert("Each rose here is a promise 💕\nI choose you, today and always 🌹");
+}
+
+function createRose() {
+    const rose = document.createElement("div");
+    rose.classList.add("rose");
+    rose.innerText = "🌹";
+    rose.style.left = Math.random() * 100 + "vw";
+    rose.style.animationDuration = (Math.random() * 3 + 3) + "s";
+    document.body.appendChild(rose);
+
+    setTimeout(() => {
+        rose.remove();
+    }, 6000);
+}
+
+setInterval(createRose, 300);
+</script>
+
+</body>
+</html>
