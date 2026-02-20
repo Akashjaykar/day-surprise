@@ -1,62 +1,59 @@
 <!DOCTYPE html>
-<html>
+<html lang="mr">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Happy Valentine's Day ❤️</title>
+<title>तुझ्यासाठी खास 💖</title>
 
 <style>
 body{
     margin:0;
-    height:100vh;
-    background:linear-gradient(135deg,#ff4d6d,#ff8fa3);
     font-family:'Segoe UI',sans-serif;
+    height:100vh;
     display:flex;
     justify-content:center;
     align-items:center;
-    overflow:hidden;
     text-align:center;
-    color:white;
+    overflow:hidden;
+    transition:0.5s;
 }
 
 .card{
-    background:rgba(255,255,255,0.15);
+    background:rgba(255,255,255,0.95);
     padding:30px;
     border-radius:20px;
-    backdrop-filter:blur(10px);
-    box-shadow:0 15px 30px rgba(0,0,0,0.2);
     width:90%;
-    max-width:380px;
+    max-width:400px;
+    box-shadow:0 15px 30px rgba(0,0,0,0.2);
 }
 
-h1{margin-bottom:10px;}
-p{font-size:18px;}
+h1{color:#ff4d6d;}
+p{
+    font-size:18px;
+    color:#333;
+    min-height:60px;
+}
 
 button{
-    margin:10px;
+    margin:8px;
     padding:10px 20px;
     border:none;
     border-radius:25px;
     font-size:16px;
     cursor:pointer;
+    background:#ff4d6d;
+    color:white;
     transition:0.3s;
 }
 
-.yes{
-    background:#fff;
-    color:#ff4d6d;
-}
-
-.no{
-    background:#ff1744;
-    color:white;
-    position:relative;
+button:hover{
+    transform:scale(1.1);
 }
 
 .heart{
     position:absolute;
-    font-size:24px;
-    animation: float 4s linear infinite;
+    font-size:22px;
+    animation:float 4s linear infinite;
 }
 
 @keyframes float{
@@ -68,41 +65,55 @@ button{
 <body>
 
 <div class="card">
-    <h1>❤️ Happy Valentine’s Day Akanksha ❤️</h1>
-    <p id="message">
-        You make my world brighter every day 🌎✨<br>
-        I have just one question for you…
-    </p>
+    <h1>माझ्या खास व्यक्तीसाठी 💖</h1>
+    <p id="message">Akanksha खालील बटन दाब आणि हस 😊</p>
 
-    <div id="buttons">
-        <button class="yes" onclick="love()">Yes 💖</button>
-        <button class="no" onmouseover="moveButton(this)">No 🙈</button>
-    </div>
+    <button onclick="showMessage()">मला आनंद दे 💕</button>
+    <button onclick="bigSurprise()">मोठं सरप्राईज 🎁</button>
 </div>
 
 <script>
-function love(){
+
+const messages = [
+"तुझं हसू म्हणजे माझ्यासाठी सगळ्यात सुंदर गिफ्ट आहे 💝",
+"तू आहेस म्हणून माझा प्रत्येक दिवस खास असतो 🌸",
+"तुझ्या आठवणींनी माझा मूड लगेच फ्रेश होतो 😊",
+"तू फक्त सुंदर नाहीस, तू माझी शांती आहेस 💖",
+"जगात खूप लोक आहेत, पण माझ्यासाठी तूच खास आहेस 🌹",
+"आज काहीही झालं तरी हसत राहा, कारण तू खूप मौल्यवान आहेस ✨"
+];
+
+function showMessage(){
+    let random = messages[Math.floor(Math.random()*messages.length)];
+    document.getElementById("message").innerHTML = random;
+    changeBackground();
+    createHearts(10);
+}
+
+function bigSurprise(){
     document.getElementById("message").innerHTML =
-    "I knew it 😘<br><br>You are my forever Valentine 💕🌹";
-    document.getElementById("buttons").style.display="none";
+    "सरप्राईज 😍💖<br>तू माझ्या आयुष्यातली सर्वात सुंदर गोष्ट आहेस! 🌷";
+    createHearts(30);
 }
 
-function moveButton(btn){
-    btn.style.position="absolute";
-    btn.style.top=Math.random()*80+"vh";
-    btn.style.left=Math.random()*80+"vw";
+function changeBackground(){
+    const colors = ["#ffd6e0","#caffbf","#9bf6ff","#ffc6ff","#fdffb6"];
+    document.body.style.background = colors[Math.floor(Math.random()*colors.length)];
 }
 
-function createHeart(){
-    let heart=document.createElement("div");
-    heart.className="heart";
-    heart.innerText="💖";
-    heart.style.left=Math.random()*100+"vw";
-    document.body.appendChild(heart);
-    setTimeout(()=>heart.remove(),4000);
+function createHearts(count){
+    for(let i=0;i<count;i++){
+        let heart=document.createElement("div");
+        heart.className="heart";
+        heart.innerText="💖";
+        heart.style.left=Math.random()*100+"vw";
+        document.body.appendChild(heart);
+        setTimeout(()=>heart.remove(),4000);
+    }
 }
 
-setInterval(createHeart,500);
+changeBackground();
+
 </script>
 
 </body>
